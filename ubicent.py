@@ -1,3 +1,4 @@
+import psycopg2
 from requests import session
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
@@ -6,6 +7,15 @@ from datetime import datetime
 
 # Database setup
 def setup_database():
+
+    # conn = psycopg2.connect(
+    #     dbname="atandence",
+    #     user="root",
+    #     password="why@123",
+    #     host="localhost",
+    #     port="5432"
+    # )
+    # c = conn.cursor()
     conn = sqlite3.connect('attendance.db', check_same_thread=False)
     c = conn.cursor()
     
@@ -115,7 +125,7 @@ class MenuBuilder:
         dashboard_button = InlineKeyboardButton(
             "📊 View Dashboard",
             web_app={
-                "url": f"https://31c1-154-160-14-57.ngrok-free.app/{deep_link}"
+                "url": f"https://5907-197-251-193-137.ngrok-free.app/{deep_link}"
             }
         )
 
@@ -128,7 +138,6 @@ class MenuBuilder:
         ]
         
         return InlineKeyboardMarkup(keyboard)
-
 
 
 # Handle country selection
@@ -233,7 +242,6 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         ),
         reply_markup=reply_markup
     )
-
 
 
 

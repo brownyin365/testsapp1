@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 
 app = Flask(__name__)
-app.secret_key = '136bbad7ffbcea6d3b679dbaefc108aeab09f3f7c9c6d332'
+app.secret_key = os.getenv('SECRET_KEY')  # Get secret key from .env
 
 
 def calculate_rank(signins):
